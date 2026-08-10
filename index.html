@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Lands Without | Isometric Dark Fantasy MMORPG</title>
-  <meta name="description" content="The Lands Without is an isometric dark fantasy MMORPG. Dangerous wilds, loot worth keeping, and three paths of power. In development.">
+  <meta name="description" content="The Lands Without is an isometric dark fantasy MMORPG. Castle sieges, quest chains, deep itemization, and three paths of power. In development.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
   <meta property="og:title" content="The Lands Without">
-  <meta property="og:description" content="An isometric dark fantasy MMORPG. Dangerous wilds, loot worth keeping, and three paths of power.">
+  <meta property="og:description" content="An isometric dark fantasy MMORPG. Castle sieges, quest chains, deep itemization, and three paths of power.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://thelandswithout.com/">
 </head>
@@ -22,10 +22,11 @@
     <nav class="nav-links">
       <a href="#world">The World</a>
       <a href="#paths">Paths</a>
+      <a href="#systems">Systems</a>
       <a href="#war">War</a>
       <a href="#loot">Loot</a>
       <a href="#craft">Crafting</a>
-      <a href="#shots">Screenshots</a>
+      <a href="#quests">Quests</a>
       <a class="nav-cta" href="#join">Join</a>
     </nav>
   </header>
@@ -47,13 +48,24 @@
         <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
         <h2 class="section-title">The World</h2>
         <div class="filigree"><span class="filigree-diamond"></span></div>
-        <p>The Lands Without is a classic isometric MMORPG of deep forests, old ruins, and open war. Your journey begins in Oakvale, a frontier where monsters hunt in packs, bosses hold their ground, and the treasure is worth the danger.</p>
-        <p>Combat is honest about its stakes. A single even fight will test you. Two enemies at once is real trouble. Three is a death sentence. Survive, and you recover in seconds, ready to push deeper.</p>
+        <p>The Lands Without is a classic isometric MMORPG of deep forests, old ruins, and open war. Your journey begins in Oakvale, a frontier where weird monsters roam, bosses hold their ground, and the treasure is worth the danger.</p>
+        <p>Combat is fast-paced from the start. A single even fight will test you. Multiple enemies can be fatal. Survive, and you recover in seconds, ready to push deeper.</p>
+        <p>Time passes whether you are ready or not. The world runs on a full day and night cycle, and Oakvale by lamplight is a different place than Oakvale at noon. Some hunts only begin at dusk.</p>
         <ul class="feature-list">
           <li><span class="feature-key">Dungeons.</span> Instanced depths beneath the open world, each with its own dangers and its own rewards.</li>
           <li><span class="feature-key">World bosses.</span> Named horrors like the White Stag and the Wendigo rule the deep woods and drop the best gear in the region.</li>
           <li><span class="feature-key">Guilds.</span> Band together, trade, duel, and take your banner to war.</li>
         </ul>
+        <div class="media-row">
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_bulwark_oakvale_village_day.jpg" alt="Isometric view of Oakvale Village in daylight, with villagers gathered around a central campfire where several dirt roads meet" loading="lazy">
+            <figcaption>Midday in Oakvale Village. Roads from every corner of the region meet at the central fire.</figcaption>
+          </figure>
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_strider_oakvale_village_night.jpg" alt="Oakvale Village at night, lit only by the campfire, with the quest tracker showing The Strange Road beneath the minimap" loading="lazy">
+            <figcaption>The same square at 9:14 PM. The tracked quest sits under the minimap, and the dark comes all the way up to the buildings.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -83,14 +95,69 @@
       </div>
     </section>
 
+    <section class="section" id="systems">
+      <div class="panel reveal">
+        <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
+        <h2 class="section-title">The Action RPG Core</h2>
+        <div class="filigree"><span class="filigree-diamond"></span></div>
+        <p>Strip away the open world and the war, and The Lands Without is a proper action RPG underneath. Real stats, real rolls, and tooltips that tell you the truth.</p>
+        <div class="media-split">
+          <div>
+            <h3>A Character Sheet With Depth</h3>
+            <p>Every character is built on four attributes, Strength, Dexterity, Intelligence, and Vitality, feeding a full sheet of combat stats: health and mana with their own regeneration, minimum and maximum damage, attack speed, critical chance, critical damage, armor, and block.</p>
+            <p>Resistances are deep. Fire, cold, lightning, and void sit alongside physical mitigation split into slashing, crushing, and piercing. It is impossible to mitigate everything, so choose wisely!</p>
+            <p>Skills rank up along your chosen path, and their tooltips show exact numbers.</p>
+          </div>
+          <figure class="media-shot reveal">
+            <img src="assets/img/systems/player_stats.png" alt="The character sheet of a level 1 Strider, showing attributes, combat stats, defensive stats, and skill tooltips for Swift Strikes, Flurry, Relentless Tempo, and Blade Storm" loading="lazy">
+            <figcaption>A level 1 Strider's sheet. Attributes on top, combat and defensive stats below, exact skill numbers in the tooltips.</figcaption>
+          </figure>
+        </div>
+        <div class="media-split">
+          <figure class="media-shot reveal">
+            <img src="assets/img/systems/player_inventory.png" alt="The inventory grid with a tooltip for a common Longbow showing bow, piercing, 5 to 14 damage, and plus 7 attack range" loading="lazy">
+            <figcaption>The inventory grid, with a tooltip for a common Longbow: bow, piercing, 5 to 14 damage, plus 7 attack range.</figcaption>
+          </figure>
+          <div>
+            <h3>An Inventory Worth Sorting</h3>
+            <p>The bag is a 40 slot grid. Equipment lives in eight slots: head, chest, main hand, off hand, gloves, boots, and two rings. Materials stack to 999, and scrip, the coin of the land, takes no space at all.</p>
+            <p>Every tooltip leads with the item's rarity color, its damage type, and its rolls. By the time a drop hits your bag, the server has already decided everything about it: rarity, prefix, suffix, and any proc it carries. What you see is what it is.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="war">
       <div class="panel reveal">
         <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
         <h2 class="section-title">War for the Land</h2>
         <div class="filigree"><span class="filigree-diamond"></span></div>
-        <p>Beyond the wilds, players fight players for territory. Castles anchor the map: hold one and you hold the land around it, along with everything that land produces.</p>
-        <p>Sieges are pitched battles at walls and gates. Defenders fight from the ramparts with the castle itself as their great equalizer. Attackers bring numbers, siege equipment, and sappers to break a way through. When the dust settles, someone new may be flying their banner over the keep.</p>
-        <p>Between sieges, contested zones burn with ongoing war, and contracts pay you to pick a side.</p>
+        <p>Beyond the wilds, armies fight for territory. Castles anchor the map: hold one and you hold the land around it, the vendors inside it, and the dungeon beneath it.</p>
+        <p>The first war is already burning. At Thornfell Outpost in northern Oakvale, the Order of the Sunken Flame lays siege to the Cervine Host, stag-horned soldiers holding the walls against the inquisitors sent to burn them out. Banner officers from both sides recruit before every battle. Sign with Legate or Captain Veyric, and fight for pay.</p>
+        <p>Every siege has a twelve minute muster while both armies stage at their rally banners, players choose their side, followed by a twenty minute assault. Attackers have to bring down the main gate, or try for one of the vulnerable sections of wall. Then push through and hold the capture ring for sixty uncontested seconds. Defenders win by keeping them off it until the clock runs out. When the battle resolves, if the attackers stand victorious, the castle changes hands.</p>
+        <ul class="feature-list">
+          <li><span class="feature-key">Requisition.</span> Fighting earns a siege currency you spend mid-battle. Attackers field battering rams, breaching charges that blow temporary holes in the wall, and waves of hired mercenaries. Defenders answer with boiling oil, gate repair crews, and sallies out the postern doors.</li>
+          <li><span class="feature-key">Armies, not skirmishes.</span> Footmen, skirmishers, champions, and veterans reinforce both sides every twenty seconds while wall archers hold the towers. Players are the ones who tip the balance.</li>
+          <li><span class="feature-key">Score that matters.</span> Kills, enemy players, gate damage, and time on the objective all earn score, and the winning side collects double pay. Victors also claim the shrine's blessing and the only keys to the Greymarch Lodge beneath the castle.</li>
+        </ul>
+        <div class="media-row">
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_bulwark_thornfell_castle_siege_day_01.jpg" alt="A Bulwark approaching the walls of Thornfell Outpost, with the siege banner showing Order of the Sunken Flame versus Cervine Host and gate health" loading="lazy">
+            <figcaption>The road to Thornfell's gate. The outpost banner at lower right tracks the matchup, the countdown, and gate health.</figcaption>
+          </figure>
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_bulwark_thornfell_castle_siege_day_02.jpg" alt="Both armies clashing at the main gate of Thornfell while a Wall Archer's health bar shows at the top of the screen" loading="lazy">
+            <figcaption>The assault. Both armies collide at the gate while wall archers fire from the towers.</figcaption>
+          </figure>
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_bulwark_thornfell_castle_siege_day_03.jpg" alt="A Bulwark fighting a Wall Archer on the ramparts of Thornfell during the siege" loading="lazy">
+            <figcaption>Fighting along the ramparts. Clearing the archer posts opens the walls for the push inside.</figcaption>
+          </figure>
+          <figure class="media-shot reveal">
+            <img src="assets/img/screenshots/gameplay_bulwark_thornfell_castle_throne_day.jpg" alt="The throne room inside Thornfell's keep, lit by braziers within the castle walls" loading="lazy">
+            <figcaption>Thornfell's throne room. Take the castle, and its halls are yours until the next siege.</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
@@ -99,8 +166,14 @@
         <div class="rivet tl"></div><div class="rivet tr"></div><div class="rivet bl"></div><div class="rivet br"></div>
         <h2 class="section-title">Loot Worth Keeping</h2>
         <div class="filigree"><span class="filigree-diamond"></span></div>
-        <p>Gear in The Lands Without is not a treadmill. Base items stay viable from the first hour to the last: a short sword found at level one, rolled with the right affixes or reforged at the smithy, can still compete at the end of the road.</p>
+        <p>Gear in The Lands Without is not a treadmill. Base items stay viable from the first hour to the last. A short sword found at level one, rolled with the right affixes or reforged at the smith, can still compete at the end of the road.</p>
         <p>Power comes from what rolls on top. Quality prefixes set the ceiling, themed suffixes decide the character of the item, and uniques carry fixed identities with mechanics all their own.</p>
+        <ul class="feature-list">
+          <li><span class="feature-key">Discrete rarity.</span> Drops run from common through uncommon, rare, epic, and legendary, with red-lettered uniques and one of a kind artifacts beyond them. Every monster rolls from its own loot table, so you learn what hunts what.</li>
+          <li><span class="feature-key">Quality prefixes.</span> Fine, Superior, Exceptional, and Masterwork raise a base item's stats by up to 40 percent. Masterwork shows up on roughly two drops in a hundred.</li>
+          <li><span class="feature-key">Themed suffixes.</span> More than twenty suffixes shape an item's character. "Of Might" rolls flat Strength, "of Flame Ward" rolls fire resistance, and proc suffixes like "of Embers" give your hits a chance to set the target burning.</li>
+          <li><span class="feature-key">Uniques with rules of their own.</span> The Cervine Sword speeds you up while you retreat from the nearest enemy. The Ice Bow saddles targets with frostbite. Dynamo stores your basic attacks as charge and unleashes them all through your next skill.</li>
+        </ul>
         <div class="loot-strip">
           <div class="loot-group rarity-common">
             <div class="loot-items">
@@ -149,21 +222,14 @@
         <p>What the world does not drop, you can make. Gather materials in the wild, smith them into gear whose stat ranges sharpen as your skill grows, and craft tradeable enchant scrolls that push good items into great ones.</p>
         <ul class="feature-list">
           <li><span class="feature-key">Four professions.</span> Smithing, enchanting, gathering, and hunting all level through use and unlock their own passive perks.</li>
-          <li><span class="feature-key">Hunting contracts.</span> Rotating contract boards pay out for the monsters you were going to fight anyway.</li>
-          <li><span class="feature-key">Drop shaping.</span> Hunting passives let you tilt the odds toward the loot your build actually wants.</li>
+          <li><span class="feature-key">Smithing.</span> Dozens of recipes spanning twenty levels of skill, and every craft rolls its stats fresh. Three iron ore and a length of rough timber make a short sword. A zweihander wants rare ore and beast fang. A good roll is worth the second trip to the forge.</li>
+          <li><span class="feature-key">Enchanting.</span> Nine scroll types, from Sharpening and Precision through Venom, Warding, Swiftness, and Nullward. Scrolls are consumable, tradeable, and stack real stats onto finished gear.</li>
+          <li><span class="feature-key">Sockets.</span> Crafted gear can roll one or two sockets for gems, and higher level recipes roll them more often, up to about one craft in three.</li>
+          <li><span class="feature-key">The right tool.</span> A pickaxe for ore, a sickle for herbs, a forester's axe for timber. Gathering feeds the forge, and the rest comes from the things you kill: hides, antler, spider silk, venom sacs.</li>
+          <li><span class="feature-key">Hunting contracts.</span> Rotating contract boards pay out for the monsters you were going to fight anyway, and hunting passives let you tilt drops toward the loot your build actually wants.</li>
+          <li><span class="feature-key">A living economy.</span> Gorn runs the forge in Oakvale and Klaus keeps the consumables, while the Thornfell Quartermaster sells only to whoever holds the castle. Scrip is the coin of the land. Hunter's Marks buy the rare stock.</li>
         </ul>
       </div>
-    </section>
-
-    <section class="section" id="shots">
-      <h2 class="section-title">Screenshots</h2>
-      <div class="filigree"><span class="filigree-diamond"></span></div>
-      <div class="shot-grid">
-        <div class="shot-frame reveal"><img src="assets/img/screenshots/player_stats.png" alt="Player stats panel showing attributes, combat stats, and skill tooltips" loading="lazy"></div>
-        <div class="shot-frame reveal"><img src="assets/img/screenshots/player_inventory.png" alt="Inventory panel with an item tooltip for a common longbow" loading="lazy"></div>
-        <div class="shot-frame reveal"><span>Coming soon</span></div>
-      </div>
-      <p class="section-note">The game is in active development. More screenshots from the current build will land here as regions are finished.</p>
     </section>
 
     <section class="section" id="join">
