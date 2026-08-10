@@ -154,12 +154,11 @@ p + p { margin-top: 0.9em; }
 
 .hero {
   position: relative;
-  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 2rem 1.5rem 1.6rem;
   background-image:
     radial-gradient(ellipse at 50% 30%, rgba(30, 30, 40, 0.55), rgba(14, 14, 19, 0.96) 70%),
     url("../assets/img/tex/stone-cobble.png");
@@ -210,7 +209,6 @@ p + p { margin-top: 0.9em; }
   max-width: 40em;
 }
 
-.hero .filigree { margin-top: 1.6rem; }
 
 .hero-fade {
   position: absolute;
