@@ -1,0 +1,573 @@
+/* ==========================================================================
+   The Lands Without - site theme
+   Ported from the in-game UI (ui_constants.gd / ui_draw.gd):
+   silver/black/white chrome, sparse gold and red accents.
+   ========================================================================== */
+
+@font-face {
+  font-family: "Eagle Lake";
+  src: url("../assets/fonts/EagleLake-Regular.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vollkorn";
+  src: url("../assets/fonts/Vollkorn-Variable.ttf") format("truetype");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+:root {
+  /* Palette (converted from Godot float colors) */
+  --bg-page: #0E0E13;
+  --panel-top: #1B1B22;
+  --panel-bottom: #0B0B0F;
+  --frame-outer: #33333D;
+  --metal-hi: #C7CCD9;
+  --metal-mid: #7A808F;
+  --metal-shadow: #21212B;
+  --trim: #9EA3B3;
+  --trim-dark: #525461;
+  --slot-empty: #16161C;
+  --slot-filled: #292933;
+  --slot-hover: #3B3B47;
+  --text: #E0E3EB;
+  --text-header: #F0F2F7;
+  --accent-gold: #CC9933;
+  --accent-gold-bright: #E8B84D;
+  --accent-red: #B32424;
+
+  /* Rarity palette (UIConstants.RARITY_COLORS) */
+  --rarity-common: #C7C7C7;
+  --rarity-uncommon: #66D166;
+  --rarity-rare: #6B9EFF;
+  --rarity-unique: #C72E2E;
+
+  --font-title: "Eagle Lake", "Georgia", serif;
+  --font-body: "Vollkorn", "Georgia", serif;
+
+  /* Panel noise overlay (~3% white speckle, mirrors FastNoise texture pass) */
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='42'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+
+  --emboss: -0.5px -0.5px 0 rgba(240, 242, 247, 0.22),
+            1px 1px 0 rgba(0, 0, 0, 0.9),
+            2px 2px 3px rgba(0, 0, 0, 0.35);
+
+  /* Dark outline for headers: 8-direction 1px black ring + soft drop */
+  --title-outline: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000,
+                   1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+                   2px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-page);
+  background-image: var(--noise);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.06rem;
+  line-height: 1.65;
+}
+
+img { max-width: 100%; display: block; }
+
+p + p { margin-top: 0.9em; }
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.4rem;
+  background: linear-gradient(var(--panel-top), var(--panel-bottom));
+  border-bottom: 1px solid var(--trim-dark);
+  box-shadow: 0 1px 0 rgba(199, 204, 217, 0.18), 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.nav-brand {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  color: var(--text-header);
+  text-decoration: none;
+  text-shadow: var(--title-outline);
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.nav-links a {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  color: var(--trim);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.nav-links a:hover { color: var(--metal-hi); }
+
+.nav-links a.nav-cta {
+  color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+  border-radius: 3px;
+  padding: 0.3rem 0.85rem;
+}
+
+.nav-links a.nav-cta:hover {
+  color: var(--accent-gold-bright);
+  border-color: var(--accent-gold-bright);
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--trim-dark);
+  border-radius: 3px;
+  padding: 8px 7px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 20px;
+  height: 2px;
+  background: var(--trim);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 88vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-image:
+    radial-gradient(ellipse at 50% 30%, rgba(30, 30, 40, 0.55), rgba(14, 14, 19, 0.96) 70%),
+    url("../assets/img/tex/stone-cobble.png");
+  background-size: auto, 256px;
+  border-bottom: 1px solid var(--trim-dark);
+}
+
+.hero-inner { max-width: 780px; }
+
+.hero-kicker {
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--trim);
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  font-weight: 400;
+  color: var(--text-header);
+  text-shadow: var(--title-outline);
+  margin: 0.4em 0 0.1em;
+}
+
+.hero-tagline {
+  font-size: 1.18rem;
+  color: var(--text);
+  margin: 1.2rem auto 2rem;
+  max-width: 34em;
+}
+
+.hero-fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 30%;
+  background: linear-gradient(rgba(14, 14, 19, 0), var(--bg-page));
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Sections and panels
+   ========================================================================== */
+
+main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+
+.section { padding: 3.5rem 0; }
+
+.section-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+  color: var(--text-header);
+  text-align: center;
+  text-shadow: var(--title-outline);
+}
+
+.section-lead,
+.section-note {
+  text-align: center;
+  max-width: 42em;
+  margin: 0 auto 2rem;
+}
+
+.section-note {
+  margin-top: 1.6rem;
+  margin-bottom: 0;
+  font-size: 0.92rem;
+  color: var(--trim);
+}
+
+/* Ornamental panel: 6px metal frame, outer highlight, inner silver trim,
+   inset carve lines, gradient body, top sheen, noise. */
+.panel {
+  position: relative;
+  border: 6px solid var(--frame-outer);
+  border-radius: 4px;
+  padding: 2.4rem 2.6rem 2.6rem;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055), rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0.18)),
+    var(--noise),
+    linear-gradient(var(--panel-top), var(--panel-bottom));
+  box-shadow:
+    0 0 0 1px rgba(199, 204, 217, 0.45),
+    0 4px 14px rgba(0, 0, 0, 0.55),
+    inset 0 0 0 1px var(--trim),
+    inset 0 0 0 2px rgba(0, 0, 0, 0.35);
+}
+
+.panel .section-title { margin-top: 0; }
+
+/* Rivets: beveled metal dots on the frame corners */
+.rivet {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, var(--metal-hi), var(--metal-mid) 55%, var(--metal-shadow));
+  box-shadow: 0 0 0 1px var(--metal-shadow);
+  pointer-events: none;
+}
+
+.rivet.tl { top: 4px; left: 4px; }
+.rivet.tr { top: 4px; right: 4px; }
+.rivet.bl { bottom: 4px; left: 4px; }
+.rivet.br { bottom: 4px; right: 4px; }
+
+/* Filigree separator: double line with centered diamond */
+.filigree {
+  position: relative;
+  height: 12px;
+  margin: 1.1rem auto 1.6rem;
+  max-width: 340px;
+}
+
+.filigree::before,
+.filigree::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+}
+
+.filigree::before {
+  top: 5px;
+  background: linear-gradient(90deg, transparent, var(--trim) 20%, var(--trim) 80%, transparent);
+}
+
+.filigree::after {
+  top: 7px;
+  background: linear-gradient(90deg, transparent, var(--trim-dark) 25%, var(--trim-dark) 75%, transparent);
+}
+
+.filigree-diamond {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translateX(-50%) rotate(45deg);
+  background: var(--metal-mid);
+  border: 1px solid var(--metal-hi);
+  box-shadow: 1px 1px 0 var(--metal-shadow);
+  z-index: 1;
+}
+
+/* Feature lists */
+.feature-list {
+  list-style: none;
+  margin-top: 1.4rem;
+}
+
+.feature-list li {
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05em;
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background: var(--trim-dark);
+  border: 1px solid var(--trim);
+}
+
+.feature-key {
+  font-family: var(--font-title);
+  font-size: 0.86rem;
+  color: var(--text-header);
+}
+
+/* ==========================================================================
+   Buttons (bevel: light top/left, dark bottom/right; pressed inverts)
+   ========================================================================== */
+
+.btn {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  background: linear-gradient(var(--slot-filled), var(--slot-empty));
+  padding: 0.75rem 1.7rem;
+  border-radius: 3px;
+  border: 1px solid;
+  border-color: var(--metal-hi) var(--metal-shadow) var(--metal-shadow) var(--metal-hi);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  transition: filter 0.12s ease;
+}
+
+.btn:hover { filter: brightness(1.12); }
+
+.btn:active {
+  border-color: var(--metal-shadow) var(--metal-hi) var(--metal-hi) var(--metal-shadow);
+  background: linear-gradient(var(--slot-empty), var(--slot-filled));
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn-gold {
+  color: var(--accent-gold-bright);
+  border-color: var(--accent-gold) var(--metal-shadow) var(--metal-shadow) var(--accent-gold);
+}
+
+.btn-gold:active {
+  border-color: var(--metal-shadow) var(--accent-gold) var(--accent-gold) var(--metal-shadow);
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.8rem;
+}
+
+.panel-cta { text-align: center; }
+.panel-cta p { max-width: 44em; margin-left: auto; margin-right: auto; }
+
+/* ==========================================================================
+   Class cards
+   ========================================================================== */
+
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.class-card {
+  position: relative;
+  border: 1px solid var(--trim-dark);
+  border-radius: 4px;
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0) 18%, rgba(0, 0, 0, 0.18)),
+    var(--noise),
+    linear-gradient(var(--panel-top), var(--panel-bottom));
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 4px 14px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.class-card:hover {
+  border-color: var(--trim);
+  transform: translateY(-3px);
+}
+
+.class-icon {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1.1rem;
+  padding: 10px;
+  background: var(--slot-empty);
+  border-radius: 4px;
+  border: 1px solid;
+  border-color: var(--metal-shadow) var(--slot-hover) var(--slot-hover) var(--metal-shadow);
+}
+
+.class-card h3 {
+  font-family: var(--font-title);
+  font-weight: 400;
+  font-size: 1.02rem;
+  color: var(--text-header);
+  text-shadow: var(--title-outline);
+}
+
+.class-role {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--accent-gold);
+  margin: 0.3rem 0 0.9rem;
+}
+
+.class-card > p:last-child { font-size: 0.97rem; }
+
+/* ==========================================================================
+   Loot strip (rarity borders: glow halo + crisp line, like draw_rarity_border)
+   ========================================================================== */
+
+.loot-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.loot-slot {
+  width: 96px;
+  padding: 10px 8px 8px;
+  text-align: center;
+  background: var(--slot-empty);
+  border-radius: 4px;
+  border: 1px solid var(--rarity, var(--rarity-common));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--rarity, var(--rarity-common)) 35%, transparent),
+              inset 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.loot-slot img { width: 64px; height: 64px; margin: 0 auto 6px; image-rendering: pixelated; }
+
+.loot-slot span {
+  font-family: var(--font-title);
+  font-size: 0.62rem;
+  color: var(--rarity, var(--rarity-common));
+}
+
+.rarity-common    { --rarity: var(--rarity-common); }
+.rarity-uncommon  { --rarity: var(--rarity-uncommon); }
+.rarity-rare      { --rarity: var(--rarity-rare); }
+.rarity-unique    { --rarity: var(--rarity-unique); }
+
+/* ==========================================================================
+   Screenshot placeholders
+   ========================================================================== */
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.shot-frame {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    var(--noise),
+    linear-gradient(var(--slot-empty), var(--panel-bottom));
+  border: 4px solid var(--frame-outer);
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px rgba(199, 204, 217, 0.35),
+    inset 0 0 0 1px var(--trim-dark),
+    0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.shot-frame span {
+  font-family: var(--font-title);
+  font-size: 0.8rem;
+  color: var(--trim-dark);
+}
+
+.shot-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.site-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 3rem;
+  font-size: 0.9rem;
+  color: var(--trim);
+}
+
+/* ==========================================================================
+   Scroll reveal
+   ========================================================================== */
+
+body.js .reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+body.js .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body.js .reveal { opacity: 1; transform: none; transition: none; }
+  .class-card, .class-card:hover { transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .card-row, .shot-grid { grid-template-columns: 1fr; }
+  .panel { padding: 1.8rem 1.4rem 2rem; }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    padding: 1rem 1.5rem 1.4rem;
+    background: linear-gradient(var(--panel-top), var(--panel-bottom));
+    border-bottom: 1px solid var(--trim-dark);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav-links.open { display: flex; }
+}
