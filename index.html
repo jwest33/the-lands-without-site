@@ -6,7 +6,7 @@
   <title>The Lands Without | Isometric Dark Fantasy MMORPG</title>
   <meta name="description" content="The Lands Without is an isometric dark fantasy MMORPG. Dangerous wilds, loot worth keeping, and three paths of power. In development.">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
   <meta property="og:title" content="The Lands Without">
   <meta property="og:description" content="An isometric dark fantasy MMORPG. Dangerous wilds, loot worth keeping, and three paths of power.">
   <meta property="og:type" content="website">
@@ -104,22 +104,39 @@
         <p>Gear in The Lands Without is not a treadmill. Base items stay viable from the first hour to the last: a short sword found at level one, rolled with the right affixes or reforged at the smithy, can still compete at the end of the road.</p>
         <p>Power comes from what rolls on top. Quality prefixes set the ceiling, themed suffixes decide the character of the item, and uniques carry fixed identities with mechanics all their own.</p>
         <div class="loot-strip">
-          <div class="loot-slot rarity-common has-popup" tabindex="0">
-            <img src="assets/img/items/sword_1h_short.png" alt="Common short sword" loading="lazy">
+          <div class="loot-group rarity-common">
+            <div class="loot-items">
+              <div class="loot-item has-popup" tabindex="0">
+                <img src="assets/img/items/sword_1h_short.png" alt="Common short sword" loading="lazy">
+                <img class="stat-popup" src="assets/img/items/short_sword.png" alt="Short Sword. Common. Sword, slashing. 3 to 8 damage." loading="lazy">
+              </div>
+            </div>
             <span>Common</span>
-            <img class="stat-popup" src="assets/img/items/short_sword.png" alt="Short Sword. Common. Sword, slashing. 3 to 8 damage." loading="lazy">
           </div>
-          <div class="loot-slot rarity-uncommon"><img src="assets/img/items/shield_kite.png" alt="Uncommon kite shield" loading="lazy"><span>Uncommon</span></div>
-          <div class="loot-slot rarity-rare"><img src="assets/img/items/bow_thorn.png" alt="Rare thorn bow" loading="lazy"><span>Rare</span></div>
-          <div class="loot-slot rarity-unique has-popup" tabindex="0">
-            <img class="icon-hd" src="assets/img/items/wand_dynamo_raw.png" alt="Dynamo, a unique wand" loading="lazy">
-            <span>Unique</span>
-            <img class="stat-popup" src="assets/img/items/dynamo.png" alt="Dynamo. Unique wand, arcane. 7 to 14 damage, plus 8 attack range, plus 3 intelligence. Basic attacks store their damage as Dynamo Charge; your next skill unleashes the stored charge on its primary target. Requires level 6." loading="lazy">
+          <div class="loot-group rarity-uncommon">
+            <div class="loot-items">
+              <div class="loot-item"><img src="assets/img/items/shield_kite.png" alt="Uncommon kite shield" loading="lazy"></div>
+            </div>
+            <span>Uncommon</span>
           </div>
-          <div class="loot-slot rarity-unique has-popup" tabindex="0">
-            <img src="assets/img/items/ring_stellas_resolve.png" alt="Stella's Resolve, a unique ring" loading="lazy">
+          <div class="loot-group rarity-rare">
+            <div class="loot-items">
+              <div class="loot-item"><img src="assets/img/items/bow_thorn.png" alt="Rare thorn bow" loading="lazy"></div>
+            </div>
+            <span>Rare</span>
+          </div>
+          <div class="loot-group rarity-unique">
+            <div class="loot-items">
+              <div class="loot-item has-popup" tabindex="0">
+                <img class="icon-hd" src="assets/img/items/wand_dynamo_raw.png" alt="Dynamo, a unique wand" loading="lazy">
+                <img class="stat-popup" src="assets/img/items/dynamo.png" alt="Dynamo. Unique wand, arcane. 7 to 14 damage, plus 8 attack range, plus 3 intelligence. Basic attacks store their damage as Dynamo Charge; your next skill unleashes the stored charge on its primary target. Requires level 6." loading="lazy">
+              </div>
+              <div class="loot-item has-popup" tabindex="0">
+                <img src="assets/img/items/ring_stellas_resolve.png" alt="Stella's Resolve, a unique ring" loading="lazy">
+                <img class="stat-popup" src="assets/img/items/stellas_resolve.png" alt="Stella's Resolve. Unique ring. Plus 3 vitality. Impairment durations are reduced up to 50 percent based on missing health. Requires level 5." loading="lazy">
+              </div>
+            </div>
             <span>Unique</span>
-            <img class="stat-popup" src="assets/img/items/stellas_resolve.png" alt="Stella's Resolve. Unique ring. Plus 3 vitality. Impairment durations are reduced up to 50 percent based on missing health. Requires level 5." loading="lazy">
           </div>
         </div>
         <p class="section-note">Hover an item to inspect its stats.</p>

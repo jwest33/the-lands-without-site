@@ -470,10 +470,8 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
   margin-top: 2rem;
 }
 
-.loot-slot {
-  position: relative;
-  width: 96px;
-  padding: 10px 8px 8px;
+.loot-group {
+  padding: 10px 10px 8px;
   text-align: center;
   background: var(--slot-empty);
   border-radius: 4px;
@@ -482,20 +480,34 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
               inset 0 0 0 1px rgba(0, 0, 0, 0.6);
 }
 
-.loot-slot img { width: 64px; height: 64px; margin: 0 auto 6px; image-rendering: pixelated; }
+.loot-items {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 6px;
+}
 
-.loot-slot span {
+.loot-item {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 3px;
+}
+
+.loot-item > img:not(.stat-popup) { width: 64px; height: 64px; image-rendering: pixelated; }
+
+.loot-item > img.icon-hd { image-rendering: auto; }
+
+.loot-group > span {
   font-family: var(--font-title);
   font-size: 0.62rem;
   color: var(--rarity, var(--rarity-common));
 }
 
-.loot-slot img.icon-hd { image-rendering: auto; }
+.loot-item.has-popup { cursor: help; }
 
-.loot-slot.has-popup { cursor: help; }
-
-.loot-slot.has-popup:hover,
-.loot-slot.has-popup:focus {
+.loot-item.has-popup:hover,
+.loot-item.has-popup:focus {
   background: var(--slot-hover);
   outline: none;
 }
@@ -517,8 +529,8 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
   transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
 }
 
-.loot-slot.has-popup:hover .stat-popup,
-.loot-slot.has-popup:focus .stat-popup {
+.loot-item.has-popup:hover .stat-popup,
+.loot-item.has-popup:focus .stat-popup {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
