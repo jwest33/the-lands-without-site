@@ -618,6 +618,18 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
   color: var(--trim);
 }
 
+.dev-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.dev-credit img {
+  border-radius: 6px;
+}
+
 /* ==========================================================================
    Scroll reveal
    ========================================================================== */
