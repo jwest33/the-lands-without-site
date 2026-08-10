@@ -193,6 +193,23 @@ p + p { margin-top: 0.9em; }
   max-width: 34em;
 }
 
+.hero-figure {
+  height: clamp(190px, 32vh, 310px);
+  width: auto;
+  margin: 1.3rem auto 0;
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.7));
+}
+
+.hero-lore {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text);
+  margin: 1.4rem auto 0.6rem;
+  max-width: 40em;
+}
+
+.hero .btn { margin-top: 1.4rem; }
+
 .hero-fade {
   position: absolute;
   inset: auto 0 0 0;
@@ -454,6 +471,7 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
 }
 
 .loot-slot {
+  position: relative;
   width: 96px;
   padding: 10px 8px 8px;
   text-align: center;
@@ -470,6 +488,44 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
   font-family: var(--font-title);
   font-size: 0.62rem;
   color: var(--rarity, var(--rarity-common));
+}
+
+.loot-slot img.icon-hd { image-rendering: auto; }
+
+.loot-slot.has-popup { cursor: help; }
+
+.loot-slot.has-popup:hover,
+.loot-slot.has-popup:focus {
+  background: var(--slot-hover);
+  outline: none;
+}
+
+/* Stat popup: mirrors the in-game item tooltip, anchored above the slot */
+.stat-popup {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 12px);
+  width: min(270px, 82vw);
+  max-width: none;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 30;
+  image-rendering: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75));
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+}
+
+.loot-slot.has-popup:hover .stat-popup,
+.loot-slot.has-popup:focus .stat-popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stat-popup { transition: none; }
 }
 
 .rarity-common    { --rarity: var(--rarity-common); }
@@ -510,7 +566,7 @@ main { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
   color: var(--trim-dark);
 }
 
-.shot-frame img { width: 100%; height: 100%; object-fit: cover; }
+.shot-frame img { width: 100%; height: 100%; object-fit: contain; }
 
 /* ==========================================================================
    Footer

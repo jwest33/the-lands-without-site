@@ -33,9 +33,10 @@
   <section class="hero">
     <div class="hero-inner">
       <p class="hero-kicker">An isometric dark fantasy MMORPG</p>
+      <img class="hero-figure" src="assets/img/stag_knight_no_background.png" alt="A stag-horned knight in dark armor bearing a sword and shield">
+      <p class="hero-tagline hero-lore">Above the desecrated throne of Gremland, the sky perforated as ten tails of brilliant radiance crashed down from the heavens, shattering the partitions between the primordial fields. Distinct bodies, and concepts became one. Power is there for those willing to grasp it, but until then, the lands are left without clarity, without reason, without mercy. These are&hellip;</p>
       <h1 class="hero-title">The Lands Without</h1>
       <div class="filigree"><span class="filigree-diamond"></span></div>
-      <p class="hero-tagline">Claim castles, hunt world bosses, and carve your name into a world that fights back.</p>
       <a class="btn btn-gold" href="#join">Follow Development</a>
     </div>
     <div class="hero-fade"></div>
@@ -103,11 +104,25 @@
         <p>Gear in The Lands Without is not a treadmill. Base items stay viable from the first hour to the last: a short sword found at level one, rolled with the right affixes or reforged at the smithy, can still compete at the end of the road.</p>
         <p>Power comes from what rolls on top. Quality prefixes set the ceiling, themed suffixes decide the character of the item, and uniques carry fixed identities with mechanics all their own.</p>
         <div class="loot-strip">
-          <div class="loot-slot rarity-common"><img src="assets/img/items/sword_1h_short.png" alt="Common short sword" loading="lazy"><span>Common</span></div>
+          <div class="loot-slot rarity-common has-popup" tabindex="0">
+            <img src="assets/img/items/sword_1h_short.png" alt="Common short sword" loading="lazy">
+            <span>Common</span>
+            <img class="stat-popup" src="assets/img/items/short_sword.png" alt="Short Sword. Common. Sword, slashing. 3 to 8 damage." loading="lazy">
+          </div>
           <div class="loot-slot rarity-uncommon"><img src="assets/img/items/shield_kite.png" alt="Uncommon kite shield" loading="lazy"><span>Uncommon</span></div>
           <div class="loot-slot rarity-rare"><img src="assets/img/items/bow_thorn.png" alt="Rare thorn bow" loading="lazy"><span>Rare</span></div>
-          <div class="loot-slot rarity-unique"><img src="assets/img/items/ring_stellas_resolve.png" alt="Unique ring" loading="lazy"><span>Unique</span></div>
+          <div class="loot-slot rarity-unique has-popup" tabindex="0">
+            <img class="icon-hd" src="assets/img/items/wand_dynamo_raw.png" alt="Dynamo, a unique wand" loading="lazy">
+            <span>Unique</span>
+            <img class="stat-popup" src="assets/img/items/dynamo.png" alt="Dynamo. Unique wand, arcane. 7 to 14 damage, plus 8 attack range, plus 3 intelligence. Basic attacks store their damage as Dynamo Charge; your next skill unleashes the stored charge on its primary target. Requires level 6." loading="lazy">
+          </div>
+          <div class="loot-slot rarity-unique has-popup" tabindex="0">
+            <img src="assets/img/items/ring_stellas_resolve.png" alt="Stella's Resolve, a unique ring" loading="lazy">
+            <span>Unique</span>
+            <img class="stat-popup" src="assets/img/items/stellas_resolve.png" alt="Stella's Resolve. Unique ring. Plus 3 vitality. Impairment durations are reduced up to 50 percent based on missing health. Requires level 5." loading="lazy">
+          </div>
         </div>
+        <p class="section-note">Hover an item to inspect its stats.</p>
       </div>
     </section>
 
@@ -129,11 +144,11 @@
       <h2 class="section-title">Screenshots</h2>
       <div class="filigree"><span class="filigree-diamond"></span></div>
       <div class="shot-grid">
-        <div class="shot-frame reveal"><span>Coming soon</span></div>
-        <div class="shot-frame reveal"><span>Coming soon</span></div>
+        <div class="shot-frame reveal"><img src="assets/img/screenshots/player_stats.png" alt="Player stats panel showing attributes, combat stats, and skill tooltips" loading="lazy"></div>
+        <div class="shot-frame reveal"><img src="assets/img/screenshots/player_inventory.png" alt="Inventory panel with an item tooltip for a common longbow" loading="lazy"></div>
         <div class="shot-frame reveal"><span>Coming soon</span></div>
       </div>
-      <p class="section-note">The game is in active development. Screenshots from the current build will land here as regions are finished.</p>
+      <p class="section-note">The game is in active development. More screenshots from the current build will land here as regions are finished.</p>
     </section>
 
     <section class="section" id="join">
